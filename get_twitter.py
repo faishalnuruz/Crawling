@@ -5,19 +5,6 @@ Created on Mon Jul 10 15:10:33 2017
 @author: Hp
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 21 14:50:43 2017
-
-@author: Hp
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 #CRAWLING TWITTER OFFLINE
 
 
