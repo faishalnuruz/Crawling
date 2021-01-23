@@ -19,27 +19,6 @@ titles = []
 getcomments = []
 comments = []
 
-#playlistIds = []
-#titles = []
-#
-#def getPlaylistId():
-#    data = {}
-#    data['part'] = 'snippet'
-#    data['maxResults'] = '100'
-#    data['channelId'] = 'UCUajjhNQ7CPitfLepxoHdtg' # Put the channelId of channel you want to Sync to.
-#    data['key'] =   'AIzaSyAngcF6oKnyEbhk3KyL9Wz1OhSi28JjbzE'
-#    requestValues = urlparse.urlencode(data)
-#    request = "https://www.googleapis.com/youtube/v3/activities?" + requestValues
-#    string = urlreq.urlopen(request).read().decode('utf-8')
-#    items = json.loads(string)['items']
-#
-#    for item in items:
-#        playlistIds.append(item['id'])
-#    
-#    return playlistIds
-#    
-#getPlaylistId()
-
 def getTitles():
     df = pd.DataFrame()
     titles = []
@@ -99,8 +78,7 @@ def getAllComments():
             videoId = item['snippet']['videoId']
             author = item['snippet']['topLevelComment']['snippet']['authorDisplayName']
             comment = item['snippet']['topLevelComment']['snippet']['textOriginal']
-    #        description = item['snippet']['description']
-    #        
+      
             allcomments.append({'videoId' : videoId, 'Name' : author,'comment' : comment})
         test = json.loads(string)
         if not test.get('nextPageToken'):
@@ -114,32 +92,7 @@ def getAllComments():
     df_allcomment = getAllComments()
     df = df.append(df_allcomment)
     df.to_csv('D:\Pekerjaan\Python\Crawl\FWD Comments.csv', sep='`', encoding='utf-8')
-#part = 'part=snippet'     
-#api = 'key=AIzaSyCvPpEsRXK_C-M6_MBQBB4jidWdPyGrmf0'
-#channelid = 'channelId=UCUajjhNQ7CPitfLepxoHdtg'    
-#
-#def profile(userid):
-#    url = 'https://www.googleapis.com/youtube/v3/activities?' + part + channel + api
-#    
-#    data = {}
-#     # Put the channelId of channel you want to Sync to.
-#    data['part'] = 'snippet, statistics'
-#    data['key'] =   'AIzaSyCvPpEsRXK_C-M6_MBQBB4jidWdPyGrmf0'
-#    requestValues = urlparse.urlencode(data)
-#    request = "https://www.googleapis.com/youtube/v3/videos?" + requestValues
-#    string = urlreq.urlopen(request).read().decode('utf-8')
-#    return json.loads(string)
-#
-#
-#def get_videoid(json_prof,id_fetchpost):    
-#    count_posts = json_prof['user']['media']['count']
-#    id_user = json_prof['user']['id']
-#
-#    url = 'https://www.googleapis.com/youtube/v3/activities?' + part + video + api
-#    response =  urllib.request.urlopen(url).read().decode('utf8') 
-#    json_posts = json.loads(response)
-#    return json_posts
-    
+  
 
 def getCount(titles):
     df3 = pd.DataFrame()
